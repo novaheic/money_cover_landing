@@ -66,7 +66,7 @@ export function Hero() {
           className="mb-10 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/25 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white backdrop-blur-md"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-buttercup animate-pulse" />
-          Applications open Q3 2026
+          Applications open summer 2026
         </motion.div>
 
         <motion.div

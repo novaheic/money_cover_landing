@@ -22,7 +22,7 @@ const pillars = [
     body: "A virtual, peer-to-peer mentorship program with guided sessions, guest speakers, and hands-on assignments — always free. We cover budgeting, credit, investing, and how to protect yourself from scams. No jargon, no shame, no upsell.",
   },
   {
-    Icon: GenderqueerSymbol,
+    Icon: Pentagram,
     gradient: "/brand/gradient-1.png",
     glow: "rgba(85, 205, 252, 0.32)",
     eyebrow: "The community",
