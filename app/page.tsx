@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Definition } from "@/components/sections/Definition";
 import { Problem } from "@/components/sections/Problem";
 import { Pitch } from "@/components/sections/Pitch";
+import { ProgramFacts } from "@/components/sections/ProgramFacts";
 import { Curriculum } from "@/components/sections/Curriculum";
 import { Coven } from "@/components/sections/Coven";
 import { Signup } from "@/components/sections/Signup";
@@ -17,6 +18,7 @@ export default function Page() {
       <Problem />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Pitch />
+      <ProgramFacts />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Curriculum />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />

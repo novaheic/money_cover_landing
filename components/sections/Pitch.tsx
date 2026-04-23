@@ -166,6 +166,7 @@ export function Pitch() {
           </div>
         </Reveal>
 
+
       </div>
     </section>
   );

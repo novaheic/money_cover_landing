@@ -8,43 +8,83 @@ import { Pentagram, CrescentMoon, VenusSymbol } from "../Symbols";
 const sessions = [
   {
     n: "01",
-    title: "Money mindset",
-    body: "Unlearning the shame. What we inherited, what we can put down.",
+    title: "Intro & Admin",
+    body: "Welcome to the coven. We set community agreements, cover program logistics, and take a first honest look at where each of us stands financially. No judgment, just a starting point.",
+    bullets: [
+      "Cohort introductions & community agreements",
+      "Setting your personal financial goals for the program",
+      "Baseline financial self-assessment (just for you)",
+    ],
   },
   {
     n: "02",
-    title: "Income & taxes",
-    body: "What lands in your account, and what the state takes — and why.",
+    title: "PF Basics & Debt",
+    body: "The fundamentals nobody taught us: net worth, cash flow, credit scores, and how debt actually works. We break down good debt vs. bad debt and build a plan to face what you owe.",
+    bullets: [
+      "Reading your credit report and understanding your score",
+      "Debt payoff strategies: avalanche vs. snowball",
+      "Building your first net worth statement",
+    ],
   },
   {
     n: "03",
-    title: "Budgeting that sticks",
-    body: "Systems that survive real life. No colour-coded spreadsheets required.",
+    title: "Budgeting",
+    body: "Not a spreadsheet lecture. A real conversation about how money moves through your life. We explore frameworks that fit irregular income and real life, and leave with a system you'll actually use.",
+    bullets: [
+      "Finding your spending leaks without shame",
+      "50/30/20, zero-based, and envelope methods compared",
+      "Building a budget that survives an irregular paycheck",
+    ],
   },
   {
     n: "04",
-    title: "Debt, demystified",
-    body: "Good debt, bad debt, and how to look it in the eye without flinching.",
+    title: "Portfolio Management",
+    body: "From index funds to retirement accounts, we cover the building blocks of investing: asset allocation, diversification, and compounding. You'll leave knowing how to set up a portfolio that works long-term.",
+    bullets: [
+      "How to open and fund a brokerage account or IRA",
+      "Understanding risk tolerance and asset allocation",
+      "Index funds, ETFs, and why most active managers lose",
+    ],
   },
   {
     n: "05",
-    title: "Saving & emergency funds",
-    body: "Future-you deserves a cushion. Here's how big and where to park it.",
+    title: "Digital Assets",
+    body: "Money is changing, and understanding how is a form of protection. We cover peer-to-peer transactions, what decentralization means in practice, and how to recognize the scams that target newcomers.",
+    bullets: [
+      "How blockchain and peer-to-peer transactions actually work",
+      "Spotting red flags: rug pulls, phishing, and pump-and-dump schemes",
+      "Safely engaging with wallets, exchanges, and self-custody",
+    ],
   },
   {
     n: "06",
-    title: "Investing 101",
-    body: "Index funds, compounding, and why time matters more than timing.",
+    title: "Entrepreneurship",
+    body: "For freelancers, side hustlers, and small business owners: how to manage irregular income, set rates, handle taxes, and keep business money separate so your work builds wealth instead of consuming it.",
+    bullets: [
+      "Pricing your work: calculating your real hourly rate",
+      "Quarterly taxes, write-offs, and self-employment deductions",
+      "Separating personal and business finances from day one",
+    ],
   },
   {
     n: "07",
-    title: "Retirement & pensions",
-    body: "The gendered pension gap is real. Here's how to close yours.",
+    title: "Insurance, Risk & Safety Nets",
+    body: "The unsexy stuff that actually protects everything else you've built. We decode what you need, what you can skip, and how to stop letting gaps in coverage turn into financial emergencies.",
+    bullets: [
+      "Health, renter's, and disability insurance decoded",
+      "Emergency funds: how much, where to keep it, when to use it",
+      "Understanding employer benefits and what to do without them",
+    ],
   },
   {
     n: "08",
-    title: "Money & the big picture",
-    body: "Negotiation, values-led spending, building wealth on your terms.",
+    title: "Capstone Presentations",
+    body: "Eight sessions in, you know something worth sharing. Pick the topic that resonated most with you and create something others can learn from. Any format works: the point is to contribute.",
+    bullets: [
+      "Choose your topic: something that changed how you think about money",
+      "Choose your format: infographic, article, video, zine, or guide",
+      "Share with the cohort and celebrate what everyone has built",
+    ],
   },
 ];
 
@@ -139,7 +179,7 @@ export function Curriculum() {
             <VenusSymbol size={32} strokeWidth={1.2} />
           </div>
 
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm md:grid-cols-2">
+          <div className="grid overflow-hidden rounded-2xl border border-white/10 backdrop-blur-sm md:grid-cols-2 divide-y divide-white/10 md:divide-y-0 md:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-white/10 md:[&>*:nth-child(n+3)]:border-t md:[&>*:nth-child(n+3)]:border-white/10">
             {sessions.map((s, i) => (
               <Reveal key={s.n} delay={(i % 4) * 0.08}>
                 <div className="group relative h-full bg-ink/80 p-8 transition-colors hover:bg-white/[0.03]">
@@ -151,9 +191,17 @@ export function Curriculum() {
                       <h3 className="mb-2 font-display text-xl md:text-2xl">
                         {s.title}
                       </h3>
-                      <p className="text-[14px] text-white/55 leading-relaxed">
+                      <p className="mb-4 text-[14px] text-white/55 leading-relaxed">
                         {s.body}
                       </p>
+                      <ul className="space-y-1.5">
+                        {s.bullets.map((b) => (
+                          <li key={b} className="flex items-start gap-2 text-[13px] text-white/40">
+                            <span className="mt-[3px] shrink-0 text-buttercup/60">✦</span>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-buttercup via-fuchsia to-cyan transition-all duration-500 group-hover:w-full" />
