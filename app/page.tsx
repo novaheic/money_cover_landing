@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { Definition } from "@/components/sections/Definition";
 import { Pitch } from "@/components/sections/Pitch";
 import { Curriculum } from "@/components/sections/Curriculum";
 import { Coven } from "@/components/sections/Coven";
@@ -9,6 +10,8 @@ export default function Page() {
   return (
     <main className="relative">
       <Hero />
+      <div className="mx-auto h-px max-w-5xl divider-gradient" />
+      <Definition />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Pitch />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
