@@ -113,7 +113,7 @@ export function Hero() {
             />
           </a>
           <a
-            href="#about"
+            href="#definition"
             className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-black/20 px-6 py-4 text-sm uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors hover:bg-black/40"
           >
             Learn more
@@ -136,7 +136,7 @@ export function Hero() {
       </div>
 
       <motion.a
-        href="#about"
+        href="#definition"
         aria-label="Scroll down"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

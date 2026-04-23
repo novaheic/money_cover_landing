@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Reveal } from "../Reveal";
-import { VenusSymbol, GenderqueerSymbol, CrescentMoon } from "../Symbols";
+import { GenderqueerSymbol, CrescentMoon, Pentagram } from "../Symbols";
 
 const pillars = [
   {
-    Icon: VenusSymbol,
+    Icon: GenderqueerSymbol,
     gradient: "/brand/gradient-2.png",
     glow: "rgba(247, 168, 196, 0.35)",
     eyebrow: "The problem",
@@ -111,7 +111,7 @@ export function Pitch() {
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
             Personal finance,{" "}
-            <span className="italic text-gradient-warm">demystified</span> for
+            <span className="italic text-gradient-warm inline-block pr-[3px]">demystified</span> for
             the rest of us.
           </h2>
         </Reveal>

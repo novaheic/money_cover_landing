@@ -101,22 +101,22 @@ function GlassButton() {
 export function ProgramFacts() {
   return (
     <section className="relative w-full overflow-hidden">
-      {/* Gradient background */}
+      {/* Hero-style gradient image background */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/brand/gradient-1.png"
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none select-none"
+        style={{ filter: "saturate(1.05)" }}
+      />
+      {/* Vignette overlay for readability */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(115deg, #1a0a2e 0%, #2d0a3e 25%, #3b0f2f 50%, #1e0f3a 75%, #0d1a2e 100%)",
-        }}
-      />
-      {/* Depth overlay */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-30"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(156,89,209,0.25) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 50%, rgba(85,205,252,0.12) 0%, transparent 60%)",
+            "radial-gradient(ellipse 90% 70% at center, transparent 0%, rgba(10,10,10,0.3) 60%, rgba(10,10,10,0.6) 100%)",
         }}
       />
 
