@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { Reveal } from "../Reveal";
 import { ScrambleStat } from "../ScrambleStat";
+import { CursorGlow } from "../CursorGlow";
 
 const stats = [
   {
@@ -31,8 +33,11 @@ const stats = [
 ];
 
 export function Problem() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id="problem"
       className="relative w-full px-6 py-24 md:py-36 overflow-hidden"
     >
@@ -43,6 +48,13 @@ export function Problem() {
         style={{
           background: "radial-gradient(ellipse, rgba(224,64,124,0.13) 0%, transparent 70%)",
         }}
+      />
+
+      {/* Subtle cursor-following glow */}
+      <CursorGlow
+        containerRef={sectionRef}
+        size={560}
+        color="rgba(224, 64, 124, 0.16)"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
