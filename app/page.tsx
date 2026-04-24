@@ -6,6 +6,7 @@ import { ProgramFacts } from "@/components/sections/ProgramFacts";
 import { Curriculum } from "@/components/sections/Curriculum";
 import { Coven } from "@/components/sections/Coven";
 import { Signup } from "@/components/sections/Signup";
+import { Mission } from "@/components/sections/Mission";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
 
@@ -45,6 +46,8 @@ export default function Page() {
       <Coven />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Signup />
+      <div className="mx-auto h-px max-w-5xl divider-gradient" />
+      <Mission />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <FAQ />
       <Footer />
