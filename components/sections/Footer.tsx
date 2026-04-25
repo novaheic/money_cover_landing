@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CrescentMoon, Pentagram } from "../Symbols";
 
 export function Footer() {
@@ -65,6 +66,15 @@ export function Footer() {
             </svg>
             <span>Reddit</span>
           </a>
+          <div className="flex items-center gap-3 text-xs text-white/35">
+            <Link href="/impressum" className="transition-colors hover:text-white/60">
+              Impressum
+            </Link>
+            <span>·</span>
+            <Link href="/datenschutz" className="transition-colors hover:text-white/60">
+              Privacy Policy
+            </Link>
+          </div>
           <div className="flex items-center gap-2 text-xs text-white/35">
             <Pentagram size={10} color="currentColor" strokeWidth={1} />
             <span>© {new Date().getFullYear()} Money Coven. All spells reserved.</span>
