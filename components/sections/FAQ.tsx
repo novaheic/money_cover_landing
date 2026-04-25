@@ -9,15 +9,15 @@ import { SolidBlob } from "../SolidBlob";
 const faqs = [
   {
     q: "When does the next cohort start?",
-    a: "Applications for the first cohort open in late spring, with sessions beginning shortly after. Join the waitlist to be the first to hear exact dates — waitlist members get early access before spots are offered publicly.",
+    a: "Applications for the first cohort open in summer 2026, with sessions beginning shortly after. Join the waitlist to be the first to hear exact dates, and to show interest in the program. We are still organizing and will keep you posted!",
   },
   {
     q: "Do I need to be a witch to join?",
-    a: "Not at all. The name is a wink at the kind of space we're building — intimate, protective, a little rebellious. What you actually need is a willingness to look honestly at your money and share that work with a small group.",
+    a: "Not at all. The name is a wink at the kind of space we're building — intimate, protective, a little rebellious. What you actually need is a willingness to look honestly at your money, actively participate in assignments, and contribute to the learnings of others",
   },
   {
     q: "How much does it cost?",
-    a: "Pricing is being finalised alongside the pilot cohort. We're committed to keeping it accessible, with a sliding scale and a limited number of scholarship spots. Waitlist members will see the full pricing before anyone else.",
+    a: "There is no cost to participating. All costs are fully covered by our sponsors and supporters. All we ask of you is that you show up to our sessions on time with enthusiasm and actively participate. You get out what you put in.",
   },
   {
     q: "What's the time commitment?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Will sessions be recorded?",
-    a: "Yes. Recordings are available to enrolled members for the duration of the program so you can catch up if life happens. Live attendance is strongly encouraged — the magic is in the room.",
+    a: "No. Sessions will not be recorded. We operate under Chatham House Rule - free use of information from the discussion, but it is not allowed to reveal who made any particular comment. All participants must take part in at least 6 of 8 sessions.",
   },
 ];
 
@@ -209,8 +209,8 @@ export function FAQ() {
             Frequently asked
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
-            Still{" "}
-            <span className="italic text-gradient-brand">curious</span>?
+            Still have{" "}
+            <span className="italic text-gradient-warm">questions</span>?
           </h2>
           <p className="mx-auto mt-5 max-w-md text-white/55 leading-relaxed">
             A few things we get asked often. If something else is on your mind,{" "}
