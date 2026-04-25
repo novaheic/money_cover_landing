@@ -10,10 +10,10 @@ import { useEffect, useRef, useState } from "react";
  * is ever active. Only activates on touch/coarse-pointer devices.
  */
 export function useCenterVisible<T extends Element>(): [
-  React.RefObject<T>,
+  React.RefObject<T | null>,
   boolean,
 ] {
-  const ref = useRef<T>(null);
+  const ref = useRef<T | null>(null);
   const [inTop, setInTop] = useState(false);
   const [inBottom, setInBottom] = useState(false);
 
