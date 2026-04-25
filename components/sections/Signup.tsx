@@ -51,27 +51,27 @@ export function Signup() {
       {/* Large corner stars with companion stars */}
       <div
         aria-hidden
-        className="absolute left-[4%] top-[8%] text-white/55 animate-twinkle"
+        className="absolute left-[4%] top-[8%] text-white/55 animate-twinkle scale-50 md:scale-100 origin-top-left"
       >
         <StarGlyph size={60} color="currentColor" />
       </div>
       <div
         aria-hidden
-        className="absolute left-[10%] top-[13%] text-white/40 animate-twinkle"
+        className="absolute left-[20%] md:left-[10%] top-[13%] text-white/40 animate-twinkle scale-50 md:scale-100 origin-top-left"
         style={{ animationDelay: "0.8s" }}
       >
         <StarGlyph size={36} color="currentColor" />
       </div>
       <div
         aria-hidden
-        className="absolute right-[5%] bottom-[7%] text-white/55 animate-twinkle"
+        className="absolute right-[5%] bottom-[7%] text-white/55 animate-twinkle scale-50 md:scale-100 origin-bottom-right"
         style={{ animationDelay: "1.4s" }}
       >
         <StarGlyph size={62} color="currentColor" />
       </div>
       <div
         aria-hidden
-        className="absolute right-[11%] bottom-[12%] text-white/40 animate-twinkle"
+        className="absolute right-[20%] md:right-[11%] bottom-[12%] text-white/40 animate-twinkle scale-50 md:scale-100 origin-bottom-right"
         style={{ animationDelay: "2s" }}
       >
         <StarGlyph size={34} color="currentColor" />

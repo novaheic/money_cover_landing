@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 
 type Props = {
   containerRef: RefObject<HTMLElement | null>;
   size?: number;
   color?: string;
+  colors?: string[];
+  colorCycleDuration?: number;
   blur?: number;
   stiffness?: number;
   damping?: number;
@@ -16,6 +18,8 @@ export function CursorGlow({
   containerRef,
   size = 520,
   color = "rgba(156, 89, 209, 0.22)",
+  colors,
+  colorCycleDuration = 2500,
   blur = 28,
   stiffness = 55,
   damping = 24,
@@ -26,6 +30,15 @@ export function CursorGlow({
   const sx = useSpring(x, { stiffness, damping, mass: 0.6 });
   const sy = useSpring(y, { stiffness, damping, mass: 0.6 });
   const firstMoveRef = useRef(true);
+  const [activeColor, setActiveColor] = useState(0);
+
+  useEffect(() => {
+    if (!colors || colors.length <= 1) return;
+    const id = setInterval(() => {
+      setActiveColor((i) => (i + 1) % colors.length);
+    }, colorCycleDuration);
+    return () => clearInterval(id);
+  }, [colors, colorCycleDuration]);
 
   useEffect(() => {
     if (reduce) return;
@@ -58,17 +71,43 @@ export function CursorGlow({
     };
   }, [containerRef, size, reduce, x, y, sx, sy]);
 
+  const sharedStyle = {
+    width: size,
+    height: size,
+    filter: `blur(${blur}px)`,
+  };
+
+  if (colors && colors.length > 1) {
+    return (
+      <>
+        {colors.map((c, i) => (
+          <motion.div
+            key={i}
+            aria-hidden
+            className="pointer-events-none absolute top-0 left-0 rounded-full"
+            style={{
+              ...sharedStyle,
+              x: sx,
+              y: sy,
+              background: `radial-gradient(circle, ${c} 0%, transparent 65%)`,
+            }}
+            animate={{ opacity: i === activeColor ? 1 : 0 }}
+            transition={{ duration: 1.4, ease: "easeInOut" }}
+          />
+        ))}
+      </>
+    );
+  }
+
   return (
     <motion.div
       aria-hidden
       className="pointer-events-none absolute top-0 left-0 rounded-full"
       style={{
+        ...sharedStyle,
         x: sx,
         y: sy,
-        width: size,
-        height: size,
         background: `radial-gradient(circle, ${color} 0%, transparent 65%)`,
-        filter: `blur(${blur}px)`,
       }}
     />
   );

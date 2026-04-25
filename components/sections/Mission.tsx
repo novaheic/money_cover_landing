@@ -21,12 +21,16 @@ const receipts: Receipt[] = [
     note: "Salem. Of the twenty executed, many of the accused women had property, inheritance, or unpaid-debt disputes on the record.",
   },
   {
-    year: "1882",
-    note: "British women are finally permitted — by law — to own property separately from their husbands.",
+    year: "1839",
+    note: "Mississippi becomes the first U.S. state to let married women own property in their own name — written mainly to shield family assets from husbands' debts, not to free women.",
   },
   {
     year: "1974",
     note: "The U.S. Equal Credit Opportunity Act. Until then, a woman needed a man to cosign a credit card in her own name.",
+  },
+  {
+    year: "1977",
+    note: "Germany. Women only gained full financial autonomy — including the right to open a bank account or sign an employment contract — without a husband's consent, in 1977.",
   },
   {
     year: "1988",
@@ -184,12 +188,11 @@ export function Mission() {
             Who this is for
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight">
-            For the granddaughters of the{" "}
-            <span className="italic text-gradient-warm">witches</span> you
-            couldn&apos;t burn.
+            Why did we start{" "}
+            <span className="italic text-gradient-warm">Money Coven</span>?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-white/55 leading-relaxed text-[15px]">
-            Our mission — said plainly and then with a little smoke.
+            Our mission is spreading financial literacy & solidarity.
           </p>
         </Reveal>
 
@@ -225,22 +228,10 @@ export function Mission() {
                 className="font-display italic leading-[1.2] text-2xl md:text-4xl lg:text-[42px] text-white/92"
                 style={{ textShadow: "0 0 60px rgba(224, 64, 124, 0.22)" }}
               >
-                &ldquo;We are the granddaughters of the{" "}
-                <span className="text-gradient-warm">witches</span> you were
-                never able to burn.&rdquo;
+                For the granddaughters of the{" "}
+                <span className="text-gradient-warm">witches </span> you were
+                never able to burn.
               </p>
-
-              <footer className="mt-10 flex flex-col items-center gap-4">
-                <WaxSeal />
-                <div className="flex flex-col items-center">
-                  <span className="font-display text-sm italic text-white/60">
-                    Tish Thawer
-                  </span>
-                  <span className="mt-1 text-[10px] uppercase tracking-[0.45em] text-white/25">
-                    The Witches of BlackBrook
-                  </span>
-                </div>
-              </footer>
             </blockquote>
           </div>
         </Reveal>
@@ -266,12 +257,11 @@ export function Mission() {
               independence at a time when that wasn&apos;t permitted to them.
             </p>
             <p>
-              <span className="italic text-lilac">Money Coven</span> is the
-              circle we wished had existed when we started — a safe, queer,
+              <span className="italic text-lilac">Money Coven</span> is a safe, queer, left,
               feminist-led space where financial literacy gets un-gatekept and
               passed hand to hand. The label is a wink. The work is serious.
-              The door stays open.
             </p>
+            <p>With AI invading more and more of our online spaces and communities, we need to be more intentional about who we support and who we trust. Money Coven is a space for us to organize and build a strong, vetted, inclusive community.</p>
           </div>
         </Reveal>
 
@@ -284,7 +274,7 @@ export function Mission() {
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/15" />
             </div>
 
-            <ol className="relative space-y-6 border-l border-white/10 pl-6 md:pl-10">
+            <ol className="relative space-y-6 md:space-y-10 border-l border-white/10 pl-6 md:pl-10">
               {receipts.map((r, i) => (
                 <li
                   key={r.year}
@@ -294,7 +284,7 @@ export function Mission() {
                   {/* marker */}
                   <span
                     aria-hidden
-                    className="absolute -left-[30px] md:-left-[42px] top-[6px] flex h-4 w-4 items-center justify-center"
+                    className="absolute -left-8 md:-left-12 -translate-x-[0.5px] top-[6px] flex h-4 w-4 items-center justify-center"
                   >
                     <span
                       className="absolute inset-0 rounded-full blur-[6px] opacity-70"
@@ -303,7 +293,7 @@ export function Mission() {
                     <span className="relative h-[6px] w-[6px] rotate-45 bg-buttercup" />
                   </span>
 
-                  <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
+                  <div className="flex flex-col gap-1 md:flex-row md:items-start md:gap-6">
                     <p className="font-display text-2xl md:text-3xl italic tabular-nums text-white/85 md:w-24 md:shrink-0">
                       {r.year}
                     </p>
@@ -316,7 +306,7 @@ export function Mission() {
             </ol>
 
             <p className="mt-8 text-center text-[12px] italic text-white/35">
-              Every line here is a grandmother, not a great-grandmother.
+              We're the first generation with full financial access. Let's do something with it.
             </p>
           </div>
         </Reveal>
@@ -329,9 +319,6 @@ export function Mission() {
                 <StarGlyph size={10} color="#F7A8C4" />
                 The circle welcomes
               </p>
-              <h3 className="font-display text-2xl md:text-3xl italic text-white/85">
-                You&apos;re already on the list.
-              </h3>
             </div>
 
             <ul className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
@@ -370,12 +357,6 @@ export function Mission() {
                 </li>
               ))}
             </ul>
-
-            <p className="mx-auto mt-12 max-w-xl text-center text-[13.5px] italic leading-relaxed text-white/45">
-              If anyone&apos;s ever hinted your gender, body, or love belonged on
-              the margins of the money conversation — you&apos;re exactly who we
-              built this for.
-            </p>
           </div>
         </Reveal>
       </div>
