@@ -49,23 +49,7 @@ export function Footer() {
             </svg>
             <span>LinkedIn</span>
           </a>
-          <a
-            href="https://substack.com/@moneycoven"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Money Coven on Substack"
-            className="inline-flex items-center gap-2 transition-colors hover:text-white md:flex-row-reverse"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              className="h-4 w-4 fill-current"
-            >
-              <path d="M2 3h20v2H2V3Zm0 4h20v13H2V7Zm2 2v2h16V9H4Zm0 4v5h16v-5H4Z" />
-            </svg>
-            <span>Substack</span>
-          </a>
-          <a
+<a
             href="https://www.reddit.com/r/MoneyCoven/"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,4 +1,7 @@
+import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json();
@@ -7,22 +10,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const response = await fetch(
-    "https://moneycoven.substack.com/api/v1/free?nojs=true",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      },
-      body: new URLSearchParams({ email }),
-    },
-  );
+  const { error } = await resend.contacts.create({
+    email,
+    audienceId: process.env.RESEND_AUDIENCE_ID!,
+    unsubscribed: false,
+  });
 
-  if (!response.ok) {
-    return NextResponse.json(
-      { error: "Subscription failed" },
-      { status: response.status },
-    );
+  if (error) {
+    console.error("Resend error:", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

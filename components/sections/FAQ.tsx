@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Will sessions be recorded?",
-    a: "No. Sessions will not be recorded. We operate under Chatham House Rule - free use of information from the discussion, but it is not allowed to reveal who made any particular comment. All participants must take part in at least 6 of 8 sessions.",
+    a: "No. Sessions will not be recorded. We take our witches' privacy very seriously. We operate under Chatham House Rule - free use of information from the discussion, but it is not allowed to reveal who made any particular comment. All participants must take part in at least 6 of 8 sessions.",
   },
 ];
 

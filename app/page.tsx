@@ -11,7 +11,24 @@ import { Partners } from "@/components/sections/Partners";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
 
-export default function Page() {
+export const revalidate = 60;
+
+async function getWitchCount(): Promise<number> {
+  try {
+    const res = await fetch(
+      `https://api.resend.com/audiences/${process.env.RESEND_AUDIENCE_ID}/contacts`,
+      { headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}` } },
+    );
+    if (!res.ok) return 0;
+    const json = await res.json();
+    return Array.isArray(json.data) ? json.data.length : 0;
+  } catch {
+    return 0;
+  }
+}
+
+export default async function Page() {
+  const witchCount = await getWitchCount();
   return (
     <main className="relative">
       <Hero />
@@ -46,7 +63,7 @@ export default function Page() {
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Coven />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
-      <Signup />
+      <Signup witchCount={witchCount} />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Mission />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />

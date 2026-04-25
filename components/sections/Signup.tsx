@@ -5,31 +5,28 @@ import { Reveal } from "../Reveal";
 import { StarGlyph } from "../Stars";
 import { CrescentMoon } from "../Symbols";
 
-export function Signup() {
+export function Signup({ witchCount = 0 }: { witchCount?: number }) {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
+  const [count, setCount] = useState<number>(witchCount);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault();
     if (!email || status === "loading") return;
 
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/subscribe", {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) {
-        throw new Error("Substack subscription request failed");
-      }
-
+      if (!res.ok) throw new Error();
       setStatus("sent");
       setEmail("");
+      setCount((c) => c + 1);
     } catch {
       setStatus("error");
     }
@@ -40,7 +37,7 @@ export function Signup() {
       id="join"
       className="relative w-full px-6 py-32 md:py-48 overflow-hidden"
     >
-      {/* Large corner stars with companion stars */}
+      {/* Large corner stars */}
       <div
         aria-hidden
         className="absolute left-[4%] top-[8%] text-white/55 animate-twinkle scale-50 md:scale-100 origin-top-left"
@@ -70,46 +67,22 @@ export function Signup() {
       </div>
 
       {/* Scattered smaller stars */}
-      <div
-        aria-hidden
-        className="absolute left-[12%] top-[42%] text-white/30 animate-twinkle"
-        style={{ animationDelay: "0.4s" }}
-      >
+      <div aria-hidden className="absolute left-[12%] top-[42%] text-white/30 animate-twinkle" style={{ animationDelay: "0.4s" }}>
         <StarGlyph size={12} color="currentColor" />
       </div>
-      <div
-        aria-hidden
-        className="absolute right-[14%] top-[22%] text-white/25 animate-twinkle"
-        style={{ animationDelay: "1.6s" }}
-      >
+      <div aria-hidden className="absolute right-[14%] top-[22%] text-white/25 animate-twinkle" style={{ animationDelay: "1.6s" }}>
         <StarGlyph size={10} color="currentColor" />
       </div>
-      <div
-        aria-hidden
-        className="absolute left-[18%] bottom-[24%] text-white/30 animate-twinkle"
-        style={{ animationDelay: "2.4s" }}
-      >
+      <div aria-hidden className="absolute left-[18%] bottom-[24%] text-white/30 animate-twinkle" style={{ animationDelay: "2.4s" }}>
         <StarGlyph size={14} color="currentColor" />
       </div>
-      <div
-        aria-hidden
-        className="absolute right-[26%] bottom-[30%] text-white/25 animate-twinkle"
-        style={{ animationDelay: "1s" }}
-      >
+      <div aria-hidden className="absolute right-[26%] bottom-[30%] text-white/25 animate-twinkle" style={{ animationDelay: "1s" }}>
         <StarGlyph size={11} color="currentColor" />
       </div>
-      <div
-        aria-hidden
-        className="absolute left-[42%] top-[16%] text-white/20 animate-twinkle"
-        style={{ animationDelay: "2.8s" }}
-      >
+      <div aria-hidden className="absolute left-[42%] top-[16%] text-white/20 animate-twinkle" style={{ animationDelay: "2.8s" }}>
         <StarGlyph size={9} color="currentColor" />
       </div>
-      <div
-        aria-hidden
-        className="absolute right-[38%] top-[14%] text-white/25 animate-twinkle"
-        style={{ animationDelay: "0.2s" }}
-      >
+      <div aria-hidden className="absolute right-[38%] top-[14%] text-white/25 animate-twinkle" style={{ animationDelay: "0.2s" }}>
         <StarGlyph size={10} color="currentColor" />
       </div>
 
@@ -128,9 +101,14 @@ export function Signup() {
             <span className="italic text-gradient-brand">join us</span>.
           </h2>
           <p className="mx-auto mt-8 max-w-lg text-white/70 leading-relaxed">
-            Drop your email and we'll let you know when applications open
+            Drop your email and we'll let you know when applications open —
             plus occasional notes from the coven. No spam. Unsubscribe anytime.
           </p>
+          {count > 0 && (
+            <p className="mt-4 text-xs text-white/40 tracking-wide">
+              ✦ {count.toLocaleString()} {count === 1 ? "witch" : "witches"} already signed up
+            </p>
+          )}
         </Reveal>
 
         <Reveal delay={0.2}>
@@ -180,8 +158,6 @@ export function Signup() {
               Something went wrong. Please try again in a moment.
             </p>
           )}
-
-
         </Reveal>
       </div>
     </section>
