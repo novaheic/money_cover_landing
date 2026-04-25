@@ -20,12 +20,21 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: "Money Coven — Inclusive financial literacy for modern witches",
   description:
-    "A free eight-session community mentorship in personal finance for women and people of marginalized genders. Join the waitlist.",
+    "A free community mentorship program in personal finance for women and people of marginalized genders.",
   openGraph: {
-    title: "Money Coven",
+    title: "Money Coven — Inclusive financial literacy for modern witches",
     description:
       "Inclusive financial literacy for modern witches. A free community mentorship program.",
     type: "website",
+    url: "https://www.moneycoven.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Money Coven — Inclusive financial literacy for modern witches",
+      },
+    ],
   },
 };
 
