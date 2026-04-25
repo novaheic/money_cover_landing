@@ -7,6 +7,7 @@ import { Curriculum } from "@/components/sections/Curriculum";
 import { Coven } from "@/components/sections/Coven";
 import { Signup } from "@/components/sections/Signup";
 import { Mission } from "@/components/sections/Mission";
+import { Partners } from "@/components/sections/Partners";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
 
@@ -48,6 +49,8 @@ export default function Page() {
       <Signup />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Mission />
+      <div className="mx-auto h-px max-w-5xl divider-gradient" />
+      <Partners />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <FAQ />
       <Footer />

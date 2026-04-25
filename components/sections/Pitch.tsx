@@ -35,7 +35,7 @@ const steps = [
   {
     num: "01",
     label: "Join a cohort",
-    detail: "Apply to an upcoming cohort - it's always free, always remote.",
+    detail: "Apply to an upcoming cohort - it's free and remote.",
   },
   {
     num: "02",
@@ -45,7 +45,7 @@ const steps = [
   {
     num: "03",
     label: "Enter the community",
-    detail: "Graduates are invited to our coven. A decentralized global network.",
+    detail: "Graduates are invited to our coven. A decentralized global community.",
   },
 ];
 

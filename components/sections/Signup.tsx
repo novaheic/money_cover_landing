@@ -133,10 +133,10 @@ export function Signup() {
           </p>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight">
             Come{" "}
-            <span className="italic text-gradient-brand">sit with us</span>.
+            <span className="italic text-gradient-brand">join us</span>.
           </h2>
           <p className="mx-auto mt-8 max-w-lg text-white/70 leading-relaxed">
-            Drop your email and we'll let you know when applications open —
+            Drop your email and we'll let you know when applications open
             plus occasional notes from the coven. No spam. Unsubscribe anytime.
           </p>
         </Reveal>
@@ -189,9 +189,7 @@ export function Signup() {
             </p>
           )}
 
-          <p className="mt-6 text-xs text-white/40">
-            Powered by Substack
-          </p>
+
         </Reveal>
       </div>
     </section>

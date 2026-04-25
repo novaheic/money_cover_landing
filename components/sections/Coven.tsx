@@ -28,10 +28,10 @@ const perks: Perk[] = [
     color: "#F7A8C4",
     numeral: "I",
     arcana: "The Sanctum",
-    body: "A vetted space for graduates. No lurkers, no scrapers, no AI bots.",
+    body: "A vetted space for graduates. No lurkers, no scrapers, no AI bots, no spam.",
     virtue: "Sanctuary",
     details: [
-      "Every member verified",
+      "Participants only",
       "No scrapers, no bots",
       "Private by design",
     ],
@@ -44,9 +44,9 @@ const perks: Perk[] = [
     body: "Keep asking questions long after the program ends. The coven answers.",
     virtue: "Kinship",
     details: [
-      "Threads stay open",
-      "Peers and facilitators",
-      "Years, not weeks",
+      "Peer-to-peer learning",
+      "Open discussions",
+      "Community Support",
     ],
   },
   {
@@ -54,12 +54,12 @@ const perks: Perk[] = [
     color: "#55CDFC",
     numeral: "III",
     arcana: "The Oracle",
-    body: "Candid conversations about new products, policies, and markets as they happen.",
+    body: "Candid conversations about new developments, policies, and markets as they happen.",
     virtue: "Foresight",
     details: [
       "Real-time intel",
-      "Early tool access",
-      "Market shifts first",
+      "Access to new tools",
+      "Stay in the loop",
     ],
   },
   {
@@ -67,12 +67,12 @@ const perks: Perk[] = [
     color: "#F5E642",
     numeral: "IV",
     arcana: "The Gathering",
-    body: "Occasional in-person workshops and meetups with people who've walked the same path.",
+    body: "Occasional in-person events and meetups with people who've walked the same path.",
     virtue: "Ritual",
     details: [
-      "Quarterly meetups",
+      "Social gatherings",
       "Workshops & dinners",
-      "Face-to-face trust",
+      "Community organizing",
     ],
   },
 ];
@@ -196,7 +196,7 @@ function TarotCard({
             <div className="flex items-center gap-2 mb-3">
               <span className="text-white/20 text-[8px]">✦</span>
               <span
-                className="font-mono text-[11px] tracking-[0.4em]"
+                className="font-mono text-[11px] tracking-[0.4em] [margin-right:-0.4em]"
                 style={{ color: `${perk.color}60` }}
               >
                 {perk.numeral}
@@ -293,7 +293,7 @@ function TarotCard({
               />
               <span className="text-white/30 text-[8px]">✦</span>
               <span
-                className="font-mono text-[9px] tracking-[0.35em]"
+                className="font-mono text-[9px] tracking-[0.35em] [margin-right:-0.35em]"
                 style={{ color: `${perk.color}95` }}
               >
                 {perk.numeral}
@@ -356,7 +356,7 @@ function TarotCard({
               />
               <span className="text-white/30 text-[8px]">✦</span>
               <span
-                className="font-mono text-[9px] tracking-[0.35em] rotate-180"
+                className="font-mono text-[9px] tracking-[0.35em] [margin-right:-0.35em] rotate-180"
                 style={{ color: `${perk.color}95` }}
               >
                 {perk.numeral}
@@ -443,9 +443,12 @@ export function Coven() {
               <span className="italic text-gradient-warm">the coven</span>.
             </h2>
             <p className="mt-6 max-w-md text-white/65 leading-relaxed">
-              Finishing the eight weeks isn't the end — it's the door. Graduates
+              Finishing the eight week program isn't the end — it's the door. Graduates
               get lifetime access to a small, private community where we keep
               the conversation going and look out for each other.
+            </p>
+            <p className="mt-6 max-w-md text-white/65 leading-relaxed">
+              Having all completed the same program, we share a common foundation and can support each other.
             </p>
             <p className="mt-4 max-w-md text-white/35 text-xs uppercase tracking-[0.2em]">
               ✦ hover or tap a card to reveal
