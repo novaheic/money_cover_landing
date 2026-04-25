@@ -18,7 +18,7 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Money Coven — Inclusive financial literacy for modern witches",
+  title: "☾ MoneyCoven ⛤",
   description:
     "A free community mentorship program in personal finance for women and people of marginalized genders.",
   openGraph: {

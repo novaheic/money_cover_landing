@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Reveal } from "../Reveal";
+import { useCenterVisible } from "../useCenterVisible";
 import { GenderqueerSymbol, CrescentMoon, Pentagram } from "../Symbols";
 
 const pillars = [
@@ -52,24 +54,28 @@ const steps = [
 type Pillar = (typeof pillars)[number];
 
 function PillarCard({ p }: { p: Pillar; index: number }) {
-  const [hovered, setHovered] = useState(false);
+  const [mouseHovered, setMouseHovered] = useState(false);
+  const [cardRef, centerActive] = useCenterVisible<HTMLDivElement>();
+  const hovered = mouseHovered || centerActive;
   return (
     <div
+      ref={cardRef}
       className="group relative h-full overflow-hidden rounded-2xl border bg-white/[0.02] p-8 backdrop-blur-sm"
       style={{ borderColor: hovered ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.1)" }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setMouseHovered(true)}
+      onMouseLeave={() => setMouseHovered(false)}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={p.gradient}
         alt=""
         aria-hidden
-        className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
+        fill
+        sizes="(max-width: 768px) 100vw, 33vw"
+        className="object-cover select-none pointer-events-none"
         style={{
           opacity: hovered ? 0.88 : 0,
-          transition: "opacity 600ms ease",
-          filter: "saturate(1.1)",
+          transition: `opacity ${centerActive ? "300ms" : "600ms"} ${centerActive ? "ease-out" : "ease"}`,
+          willChange: "opacity",
         }}
       />
       <div
@@ -77,7 +83,7 @@ function PillarCard({ p }: { p: Pillar; index: number }) {
         style={{
           background: "rgba(10,10,10,0.22)",
           opacity: hovered ? 1 : 0,
-          transition: "opacity 600ms ease",
+          transition: `opacity ${centerActive ? "300ms" : "600ms"} ${centerActive ? "ease-out" : "ease"}`,
         }}
       />
       <p className="relative z-10 mb-4 text-[11px] uppercase tracking-[0.3em] text-white/30">
@@ -104,7 +110,6 @@ export function Pitch() {
     <section id="about" className="relative w-full px-6 py-32 md:py-40">
       <div className="mx-auto max-w-6xl">
 
-        {/* Heading block */}
         <Reveal className="mb-5 max-w-3xl">
           <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/30">
             What is Money Coven?
@@ -128,7 +133,6 @@ export function Pitch() {
           </p>
         </Reveal>
 
-        {/* Pillars */}
         <div className="grid gap-8 md:grid-cols-3 mb-10">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.12}>
@@ -137,7 +141,6 @@ export function Pitch() {
           ))}
         </div>
 
-        {/* How it works */}
         <Reveal delay={0.35}>
           <div className="rounded-2xl border border-white/8 bg-white/[0.018] px-8 py-7">
             <p className="mb-7 text-[11px] uppercase tracking-[0.35em] text-white/30">
@@ -146,7 +149,6 @@ export function Pitch() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-0">
               {steps.map((s, i) => (
                 <div key={s.num} className="relative flex items-start gap-4 md:pr-8">
-                  {/* Connector line between steps */}
                   {i < steps.length - 1 && (
                     <div
                       aria-hidden
@@ -165,7 +167,6 @@ export function Pitch() {
             </div>
           </div>
         </Reveal>
-
 
       </div>
     </section>

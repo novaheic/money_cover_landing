@@ -4,6 +4,7 @@ import { Reveal } from "../Reveal";
 import { MeshBlob } from "../MeshBlob";
 import { SolidBlob } from "../SolidBlob";
 import { Pentagram, CrescentMoon, VenusSymbol } from "../Symbols";
+import { useCenterVisible } from "../useCenterVisible";
 
 const sessions = [
   {
@@ -87,6 +88,50 @@ const sessions = [
     ],
   },
 ];
+
+type Session = (typeof sessions)[number];
+
+function SessionCard({ s }: { s: Session }) {
+  const [cardRef, isActive] = useCenterVisible<HTMLDivElement>();
+  return (
+    <div
+      ref={cardRef}
+      className="group relative h-full bg-ink/80 p-8 transition-colors hover:bg-white/[0.03]"
+      style={{ backgroundColor: isActive ? "rgba(255,255,255,0.03)" : undefined }}
+    >
+      <div className="flex items-start gap-6">
+        <span
+          className="font-display text-3xl italic group-hover:text-buttercup"
+          style={{
+            color: isActive ? "#F5E642" : "rgba(255,255,255,0.3)",
+            transition: isActive ? "color 300ms ease-out" : "color 300ms ease",
+          }}
+        >
+          {s.n}
+        </span>
+        <div className="flex-1">
+          <h3 className="mb-2 font-display text-xl md:text-2xl">{s.title}</h3>
+          <p className="mb-4 text-[14px] text-white/55 leading-relaxed">{s.body}</p>
+          <ul className="space-y-1.5">
+            {s.bullets.map((b) => (
+              <li key={b} className="flex items-start gap-2 text-[13px] text-white/40">
+                <span className="mt-[3px] shrink-0 text-buttercup/60">✦</span>
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div
+        className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-buttercup via-fuchsia to-cyan group-hover:w-full"
+        style={{
+          width: isActive ? "100%" : undefined,
+          transition: isActive ? "width 300ms ease-out" : "width 500ms ease",
+        }}
+      />
+    </div>
+  );
+}
 
 export function Curriculum() {
   return (
@@ -182,30 +227,7 @@ export function Curriculum() {
           <div className="grid overflow-hidden rounded-2xl border border-white/10 backdrop-blur-sm md:grid-cols-2 divide-y divide-white/10 md:divide-y-0 md:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-white/10 md:[&>*:nth-child(n+3)]:border-t md:[&>*:nth-child(n+3)]:border-white/10">
             {sessions.map((s, i) => (
               <Reveal key={s.n} delay={(i % 4) * 0.08}>
-                <div className="group relative h-full bg-ink/80 p-8 transition-colors hover:bg-white/[0.03]">
-                  <div className="flex items-start gap-6">
-                    <span className="font-display text-3xl italic text-white/30 transition-colors group-hover:text-buttercup">
-                      {s.n}
-                    </span>
-                    <div className="flex-1">
-                      <h3 className="mb-2 font-display text-xl md:text-2xl">
-                        {s.title}
-                      </h3>
-                      <p className="mb-4 text-[14px] text-white/55 leading-relaxed">
-                        {s.body}
-                      </p>
-                      <ul className="space-y-1.5">
-                        {s.bullets.map((b) => (
-                          <li key={b} className="flex items-start gap-2 text-[13px] text-white/40">
-                            <span className="mt-[3px] shrink-0 text-buttercup/60">✦</span>
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-buttercup via-fuchsia to-cyan transition-all duration-500 group-hover:w-full" />
-                </div>
+                <SessionCard s={s} />
               </Reveal>
             ))}
           </div>

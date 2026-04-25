@@ -55,6 +55,7 @@ export function SolidBlob({
         transform: rotate ? `rotate(${rotate}deg)` : undefined,
         filter: blur ? `blur(${blur}px)` : undefined,
         opacity,
+        willChange: "transform",
         boxShadow: glow ? `0 30px 120px ${glow}` : undefined,
         mixBlendMode: blend as React.CSSProperties["mixBlendMode"],
         animationDelay: delay ? `${delay}s` : undefined,

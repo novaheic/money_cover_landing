@@ -12,12 +12,29 @@ const BTC_ADDRESS = "bc1q6cn9fttcgxkf5tu94hehd9yhuh7fd4r35qmffs";
 
 function CopyButtonOnly({ label, address }: { label: string; address: string }) {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  function handleCopy() {
-    navigator.clipboard.writeText(address).then(() => {
+  async function handleCopy() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(address);
+      } else {
+        // Fallback for iOS Safari private browsing and older browsers
+        const ta = document.createElement("textarea");
+        ta.value = address;
+        ta.style.cssText = "position:fixed;top:-9999px;left:-9999px;opacity:0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // silently fail — address is displayed for manual copy
+    }
   }
 
   return (
