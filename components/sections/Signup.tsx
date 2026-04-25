@@ -18,19 +18,11 @@ export function Signup() {
     setStatus("loading");
 
     try {
-      const response = await fetch(
-        "https://moneycoven.substack.com/api/v1/free?nojs=true",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          },
-          body: new URLSearchParams({
-            email,
-            source: "moneycoven_website_signup",
-          }),
-        },
-      );
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
       if (!response.ok) {
         throw new Error("Substack subscription request failed");
