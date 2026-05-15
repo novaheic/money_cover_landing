@@ -161,7 +161,7 @@ export function Hero() {
           </form>
           <div className="mt-4 flex min-h-[20px] items-center justify-center text-xs text-white/60">
             {status === "sent" ? (
-              <span>Welcome to the coven. Check your inbox.</span>
+              <span>Welcome to the coven.</span>
             ) : status === "error" ? (
               <span className="text-rose-200">Something went wrong. Please try again.</span>
             ) : null}
