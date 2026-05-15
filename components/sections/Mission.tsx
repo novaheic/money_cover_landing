@@ -229,7 +229,7 @@ export function Mission() {
                 style={{ textShadow: "0 0 60px rgba(224, 64, 124, 0.22)" }}
               >
                 For the granddaughters of the{" "}
-                <span className="text-gradient-warm">witches </span> you were
+                <span className="text-gradient-warm">witches </span> they were
                 never able to burn.
               </p>
             </blockquote>

@@ -106,7 +106,7 @@ export function Signup({ witchCount = 0 }: { witchCount?: number }) {
           </p>
           {count > 0 && (
             <p className="mt-4 text-xs text-white/40 tracking-wide">
-              ✦ {count.toLocaleString()} {count === 1 ? "witch" : "witches"} already signed up
+              ✦ Join {count.toLocaleString()} others on the waitlist
             </p>
           )}
         </Reveal>

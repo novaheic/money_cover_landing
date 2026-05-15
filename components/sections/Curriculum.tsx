@@ -82,8 +82,8 @@ const sessions = [
     title: "Capstone Presentations",
     body: "Eight sessions in, you know something worth sharing. Pick the topic that resonated most with you and create something others can learn from. Any format works: the point is to contribute.",
     bullets: [
-      "Choose your topic: something that changed how you think about money",
-      "Choose your format: infographic, article, video, zine, or guide",
+      "Choose your topic: something that changed how you see money",
+      "Choose your format: infographic, article, video, or guide",
       "Share with the cohort and celebrate what everyone has built",
     ],
   },

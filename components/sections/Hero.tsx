@@ -1,11 +1,35 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Stars } from "../Stars";
 import { SquigglyDivider } from "../SquigglyDivider";
 
-export function Hero() {
+export function Hero({ witchCount = 0 }: { witchCount?: number }) {
   const reduce = useReducedMotion();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
+  const [count, setCount] = useState<number>(witchCount);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || status === "loading" || status === "sent") return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("sent");
+      setEmail("");
+      setCount((c) => c + 1);
+    } catch {
+      setStatus("error");
+    }
+  }
+
   const heroStars = [
     { top: "8%", left: "4%", size: 84, delay: "0.1s", color: "rgba(255,255,255,0.62)", mobileSize: 32, mobileTop: "6%", mobileLeft: "3%" },
     { top: "14%", left: "11%", size: 52, delay: "0.8s", color: "rgba(255,255,255,0.45)", mobileSize: 20, mobileTop: "16%", mobileLeft: "8%" },
@@ -25,7 +49,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6 pb-56 pt-32"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6 pb-40 pt-32"
     >
       {/* Full-bleed gradient background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -100,33 +124,54 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7 }}
-          className="mt-12 flex flex-col sm:flex-row items-center gap-4"
+          className="mt-12 flex w-full max-w-lg flex-col items-center"
         >
-          <a
-            href="#join"
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-buttercup px-8 py-4 text-sm font-medium uppercase tracking-[0.18em] text-ink shadow-[0_10px_40px_rgba(245,230,66,0.35)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+          <form
+            onSubmit={handleSubmit}
+            className="relative flex w-full flex-col gap-2 rounded-3xl border border-white/25 bg-black/30 p-2 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.35)] sm:flex-row sm:gap-0 sm:rounded-full"
           >
-            <span className="relative z-10">Join the waitlist</span>
-            <span
-              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full"
-              aria-hidden
+            <label htmlFor="hero-email" className="sr-only">
+              Email address
+            </label>
+            <input
+              id="hero-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              disabled={status === "sent" || status === "loading"}
+              className="flex-1 rounded-full bg-transparent px-5 py-3 text-base text-white placeholder:text-white/50 focus:outline-none disabled:opacity-60"
             />
-          </a>
-          <a
-            href="#definition"
-            className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-black/20 px-6 py-4 text-sm uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors hover:bg-black/40"
-          >
-            Learn more
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 5v14M5 12l7 7 7-7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <button
+              type="submit"
+              disabled={status === "sent" || status === "loading"}
+              className="group relative overflow-hidden rounded-full bg-buttercup px-8 py-3 text-xs font-medium uppercase tracking-[0.14em] text-ink shadow-[0_6px_24px_rgba(245,230,66,0.4)] transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+            >
+              <span className="relative z-10 whitespace-nowrap">
+                {status === "sent"
+                  ? "You're in ✦"
+                  : status === "loading"
+                    ? "Sending..."
+                    : "Join the waitlist"}
+              </span>
+              <span
+                className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                aria-hidden
               />
-            </svg>
-          </a>
+            </button>
+          </form>
+          <div className="mt-4 flex min-h-[20px] items-center justify-center text-xs text-white/60">
+            {status === "sent" ? (
+              <span>Welcome to the coven. Check your inbox.</span>
+            ) : status === "error" ? (
+              <span className="text-rose-200">Something went wrong. Please try again.</span>
+            ) : count > 0 ? (
+              <span className="tracking-wide">
+                ✦ Join {count.toLocaleString()} other{count === 1 ? "" : "s"} on the waitlist
+              </span>
+            ) : null}
+          </div>
         </motion.div>
       </div>
 
@@ -137,14 +182,14 @@ export function Hero() {
 
       <motion.a
         href="#definition"
-        aria-label="Scroll down"
+        aria-label="Learn more"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/50 hover:text-white transition-colors"
+        className="absolute bottom-3 left-1/2 z-10 -translate-x-1/2 text-white/50 hover:text-white transition-colors"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+          <span className="text-[10px] uppercase tracking-[0.3em]">Learn more</span>
           <motion.div
             animate={reduce ? {} : { y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
