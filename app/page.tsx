@@ -31,7 +31,7 @@ export default async function Page() {
   const witchCount = await getWitchCount();
   return (
     <main className="relative">
-      <Hero witchCount={witchCount} />
+      <Hero />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />
       <Definition />
       <div className="mx-auto h-px max-w-5xl divider-gradient" />

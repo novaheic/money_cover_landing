@@ -5,11 +5,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Stars } from "../Stars";
 import { SquigglyDivider } from "../SquigglyDivider";
 
-export function Hero({ witchCount = 0 }: { witchCount?: number }) {
+export function Hero() {
   const reduce = useReducedMotion();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
-  const [count, setCount] = useState<number>(witchCount);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,7 +23,6 @@ export function Hero({ witchCount = 0 }: { witchCount?: number }) {
       if (!res.ok) throw new Error();
       setStatus("sent");
       setEmail("");
-      setCount((c) => c + 1);
     } catch {
       setStatus("error");
     }
@@ -166,10 +164,6 @@ export function Hero({ witchCount = 0 }: { witchCount?: number }) {
               <span>Welcome to the coven. Check your inbox.</span>
             ) : status === "error" ? (
               <span className="text-rose-200">Something went wrong. Please try again.</span>
-            ) : count > 0 ? (
-              <span className="tracking-wide">
-                ✦ Join {count.toLocaleString()} other{count === 1 ? "" : "s"} on the waitlist
-              </span>
             ) : null}
           </div>
         </motion.div>
