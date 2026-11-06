@@ -9,7 +9,7 @@ import { SolidBlob } from "../SolidBlob";
 const faqs = [
   {
     q: "When does the next cohort start?",
-    a: "Applications for the first cohort open in summer 2026, with sessions beginning shortly after. Join the waitlist to be the first to hear exact dates, and to show interest in the program. We are still organizing and will keep you posted!",
+    a: "Applications for the first cohort open in 2027, with sessions beginning shortly after. Join the waitlist to be the first to hear exact dates, and to show interest in the program. We are still organizing and will keep you posted!",
   },
   {
     q: "Do I need to be a witch to join?",
